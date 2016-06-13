@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="helloworld_antTest">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.8" />
+	<property name="source" value="1.8" />
+	<property name="dist.dir" value="dist" /> 
+	<property name="webRoot.dir" value="WebRoot"/> 
+	    <property name="web-inf.dir" value="${webRoot.dir}/WEB-INF"/> 
+	<path id="Apache Tomcat v7.0 [Tomcat 7].libraryclasspath">
+		<pathelement location="../../../../opt/tomcat7/lib/commons-httpclient.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-lang.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-i18n-fr.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-coyote.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/jsp-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/httpclient-4.2.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-codec-1.6.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/httpclient-cache-4.2.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/json-lib-2.2.2-jdk15.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/catalina-ant.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-beanutils.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-logging-1.1.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-codec.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons-collections.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/httpcore-4.2.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/catalina-tribes.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/annotations-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/el-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/httpmime-4.2.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/jasper-el.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-i18n-ja.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/websocket-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-jdbc.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/servlet-api.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat7-websocket.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/jasper.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/catalina-ha.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-util.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/catalina.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/ecj-4.4.2.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-i18n-es.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/org.eclipse.jst.server.tomcat.runtime.70.loader.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/commons_logging.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/ezmorph-1.0.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/fluent-hc-4.2.1.jar" />
+		<pathelement location="../../../../opt/tomcat7/lib/tomcat-dbcp.jar" />
+	</path>
+	<path id="Web App Libraries.libraryclasspath" />
+	<path id="EAR Libraries.libraryclasspath" />
+	<path id="helloworld_antTest.classpath">
+		<pathelement location="build/classes" />
+		<path refid="Apache Tomcat v7.0 [Tomcat 7].libraryclasspath" />
+		<path refid="Web App Libraries.libraryclasspath" />
+		<path refid="EAR Libraries.libraryclasspath" />
+	</path>
+	<target name="init">
+		<mkdir dir="build/classes" />
+		<copy includeemptydirs="false" todir="build/classes">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="build/classes" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="helloworld_antTest.classpath" />
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
+
+	<target name="war" depends="build-project">  
+	        <war destfile="dist/helloworld_antTest.war" webxml="WebContent/WEB-INF/web.xml">  
+	            <fileset dir="WebContent"/>  
+	            <lib dir="WebContent/WEB-INF/lib"/>  
+	            <classes dir="build/classes"/>  
+	        </war>  
+	    </target>  
+
+
+</project>
